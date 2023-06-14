@@ -14,9 +14,17 @@ class Product(models.Model):
   def is_featured(self):
     return self.featured == True
   
+  def __str__(self) :
+    return self.name
+  
 
 class Store(models.Model):
   product = models.OneToOneField(Product,on_delete=models.CASCADE)
   name=models.CharField(max_length=50,blank=True)
   details = models.TextField(blank=True)
   cover = models.ImageField(upload_to="shop/cov")
+
+
+  
+  def __str__(self) :
+    return self.name

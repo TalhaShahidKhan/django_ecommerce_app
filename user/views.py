@@ -9,9 +9,6 @@ User=get_user_model()
 def landigPage(request):
     return render(request, 'user/landingpage.html')
 
-@login_required(login_url='login')
-def homepage(request):
-  return render(request, 'user/home.html')
 
 
 @login_required(login_url='login')

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Talha's Ecommerce Store | Here is our best products{% endblock title %}
+{% block body %}
+<div class="container m-auto">
+  
+{% for pros in pro %}
+<h1>{{pros.name}}</h1>
+<h1>{{pros.des}}</h1>
+<h1>{{pros.price}}</h1>
+{% endfor %}
+
+</div>
+{% endblock body %}
