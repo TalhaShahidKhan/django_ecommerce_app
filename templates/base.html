@@ -109,7 +109,9 @@
   </div>
   <hr class="shadow-xl">
   {% comment %} navbar end {% endcomment %}
-  {% block body %}{% endblock body %}
+  <div class="container m-auto">
+    {% block body %}{% endblock body %}
+  </div>
   {% comment %} footer start {% endcomment %}
   <div class="bg-white pt-4 sm:pt-10 lg:pt-12">
     <footer class="max-w-screen-2xl px-4 md:px-8 mx-auto">
