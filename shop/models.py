@@ -1,11 +1,33 @@
 from django.db import models
 from django.template.defaultfilters import slugify  
-
+from django.conf import settings
 # Create your models here.
+User = settings.AUTH_USER_MODEL
+
+class Store(models.Model):
+  author = models.OneToOneField(User , on_delete=models.CASCADE,null=True,blank=True)
+  name=models.CharField(max_length=50,blank=True)
+  slug = models.SlugField(unique=True, blank=True, null=True)
+  details = models.TextField(blank=True)
+  cover = models.ImageField(upload_to="shop/cov")
+
+  class Meta:
+      ordering = ['-name']
+
+  
+  def __str__(self) :
+    return self.name
+  
+  def save(self,*args, **kwargs):
+    if not self.slug:
+      self.slug = slugify(self.name)
+    return super(Store,self).save(*args, **kwargs)
+  
 
 
 
 class Product(models.Model):
+  store = models.OneToOneField(Store , on_delete=models.CASCADE, null=True, blank=True)
   name = models.CharField(max_length=20,blank=True)
   des  = models.TextField(blank=True)
   slug = models.SlugField(unique=True, blank=True, null=True)
@@ -32,22 +54,3 @@ class Product(models.Model):
     return super(Product,self).save(*args, **kwargs)
   
   
-
-class Store(models.Model):
-  product = models.ManyToManyField(Product,blank=True)
-  name=models.CharField(max_length=50,blank=True)
-  slug = models.SlugField(unique=True, blank=True, null=True)
-  details = models.TextField(blank=True)
-  cover = models.ImageField(upload_to="shop/cov")
-
-  class Meta:
-      ordering = ['-name']
-
-  
-  def __str__(self) :
-    return self.name
-  
-  def save(self,*args, **kwargs):
-    if not self.slug:
-      self.slug = slugify(self.name)
-    return super(Store,self).save(*args, **kwargs)

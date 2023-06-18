@@ -16,19 +16,33 @@
       </div>
 
       <div class="flex flex-wrap -m-4">
-      {% for pros in pro %}
+        {% for pros in pro %}
         <div class="xl:w-1/4 md:w-1/2 p-4">
           <div class="bg-gray-300 p-6 rounded-lg">
-            <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{pros.pic.url}}"
-              alt="content">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{pros.pic.url}}" alt="content">
             <h3 class="tracking-widest text-indigo-800 text-lg font-medium title-font">${{pros.price}}</h3>
-            <h2 class="text-xl font-semiboldbold text-gray-900 title-font mt-2 mb-4">{{pros.name}}</h2>
+            <a href="" class="text-xl font-semiboldbold text-gray-900 title-font mt-2 mb-4">{{pros.name}}</a>
             <p class="leading-relaxed text-base">{{pros.des}}</p>
             {% if pros.is_featured %}
-            <div class="flex justify-start items-start">
-              <h1 class="text-xl font-bold text-blue-600 bg-gray-500 rounded-lg text-center px-1 py-1 mt-2">Featured</h1>
+            <div class="flex justify-between items-start">
+              <h1 class="text-xl font-bold text-blue-600 bg-gray-500 rounded-lg text-center px-3 py-1 mt-2">Featured
+              </h1>
+              <a href="" class="text-xl font-bold text-white bg-blue-500 rounded-lg text-center px-4 py-2 mt-2">Buy!</a>
             </div>
             {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div> 
+      <div class="flex flex-wrap -m-4">
+        {% for strs in sto %}
+        <div class="xl:w-1/4 md:w-1/2 p-4">
+          <div class="bg-gray-100 p-6 rounded-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{strs.cover.url}}"
+              alt="content">
+            <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{strs.author}}</h3>
+            <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{{strs.name}}</h2>
+            <p class="leading-relaxed text-base">{{strs.details}}</p>
           </div>
         </div>
         {% endfor %}
