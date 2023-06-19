@@ -119,8 +119,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-AUTH_USER_MODEL = 'user.CustomUser'
-
 
 
 # Static files (CSS, JavaScript, Images)
@@ -149,6 +147,8 @@ EMAIL_HOST_PASSWORD='uxwbgjrouvwwbakf'
 EMAIL_USE_TLS=True
 
 
+
+AUTH_USER_MODEL = 'user.CustomUser'
 
 # managing media
 MEDIA_ROOT = BASE_DIR / 'media'
