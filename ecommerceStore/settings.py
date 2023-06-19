@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_tailwind',
     
     'user.apps.UserConfig',
+    'shop.apps.ShopConfig',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"
