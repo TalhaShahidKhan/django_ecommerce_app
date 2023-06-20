@@ -13,10 +13,16 @@
           
           <p class="leading-relaxed">{{pro.des}}</p>
           
-          <div class="flex">
+          <div class="flex mt-2">
             <span class="title-font font-medium text-2xl text-gray-900">${{pro.price}}</span>
             <a href = "" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy</a>
           </div>
+          {% if request.user.is_superuser %}
+          <div class="flex mt-2 border-4 border-indigo-800 hover:shadow-xl px-2 py-3 rounded-xl">
+            <a href = "{% url 'shop:pro_upd' pro.slug %}" class="mx-auto flex justify-center  text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Update</a>
+            <a href = "{% url 'shop:pro_dlt' pro.slug %}" class="mx-auto flex justify-center  text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Delete</a>
+          </div>
+          {% endif %}
         </div>
       </div>
     </div>

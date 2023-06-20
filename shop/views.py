@@ -54,9 +54,6 @@ def update_product_view(request,slug):
   context={
     "form":form,
   }
-  if not product.can_edit(request.user):
-        messages.error(request,"You don't have permission to update Product.")
-        return redirect('/shop')
   if request.method == "POST" :
     form=ProductCreateForm(request.POST, instance=product, files=request.FILES)
     if form.is_valid():
@@ -70,12 +67,5 @@ def update_product_view(request,slug):
 @login_required(login_url='login')
 def delt_product(request,slug):
   product=Product.objects.get(slug=slug)
-  if not product.can_edit(request.user):
-        messages.error(request,"You don't have permission to delete others post")
-        return redirect('/shop')
-  else:
-    product.delete()
+  product.delete()
   return render(request, 'shop/dltpro.html')
-
-def seller(request):
-   return render(request, "shop/seller.html")
