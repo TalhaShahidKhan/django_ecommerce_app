@@ -15,9 +15,14 @@
           
           <div class="flex mt-2">
             <span class="title-font font-medium text-2xl text-gray-900">${{pro.price}}</span>
-           {% if request.user.purchase.complated == True %}
-           {% else %}
-           <a href = "" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy</a>
+           {% if own %}
+           <p class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 rounded">Owned!</p>
+           {%  elif pro %}
+          <form class="flex ml-auto" method = "POST" action="{% url 'purchase:start' %}">
+            {% csrf_token %}
+            <input type="hidden" value={{pro.slug}} name="slug">
+            <button type="submit" class=" text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy</button>
+          </form>
            {% endif %} 
           </div>
           {% if request.user.is_superuser %}

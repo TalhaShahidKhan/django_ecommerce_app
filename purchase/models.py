@@ -11,3 +11,9 @@ class Purchase(models.Model):
     completed = models.BooleanField(default=False)
     stripe_price = models.IntegerField(default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def is_complete(self):
+        return self.completed == True
+    
+    def __str__(self) -> str:
+        return f"{self.product} by {self.user}"
