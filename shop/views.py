@@ -18,8 +18,12 @@ def list_product_view(request):
 
 def product_details_view(request,slug):
   product=Product.objects.get(slug=slug)
+  is_owner = False
+  if request.user.is_authenticated:
+    is_owner = request.user.purchase_set.all().filter(product = product,completed = True).exists()
   context={
-    "pro":product
+    "pro":product,
+    "own":is_owner
   }
   return render(request,'shop/prodet.html',context)
 

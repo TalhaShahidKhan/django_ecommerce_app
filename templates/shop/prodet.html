@@ -15,7 +15,10 @@
           
           <div class="flex mt-2">
             <span class="title-font font-medium text-2xl text-gray-900">${{pro.price}}</span>
-            <a href = "" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy</a>
+           {% if request.user.purchase.complated == True %}
+           {% else %}
+           <a href = "" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy</a>
+           {% endif %} 
           </div>
           {% if request.user.is_superuser %}
           <div class="flex mt-2 border-4 border-indigo-800 hover:shadow-xl px-2 py-3 rounded-xl">
