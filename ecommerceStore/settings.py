@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_tailwind',
+    'rest_framework',
+    'patterns',
+    'bKash_payment',
     
     'user.apps.UserConfig',
     'shop.apps.ShopConfig',

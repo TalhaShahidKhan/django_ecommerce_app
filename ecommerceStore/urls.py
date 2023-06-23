@@ -26,7 +26,7 @@ urlpatterns = [
     path('auth/', include('django.contrib.auth.urls'),name='auth'),
     path('home/',include('user.urls'),name='home' ),
     path('shop/',include('shop.urls'),name='shop' ),
-    path('purchase/',include('purchase.urls'),name='purchase' ),
+    path('purchase/',include('bKash_payment.urls'),name='purchase' ),
 ]
 
 if settings.DEBUG:
