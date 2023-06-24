@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_tailwind',
     'rest_framework',
-    'patterns',
     'bKash_payment',
     
     'user.apps.UserConfig',
